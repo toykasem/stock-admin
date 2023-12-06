@@ -1,0 +1,195 @@
+@charset "UTF-8";
+/*------------------------------------*\
+		# primary Sass file
+
+		## doc scss
+		http://github.com/paranoida/sass-mediaqueries
+		http://bourbon.io/docs/
+\*------------------------------------*/
+/*------------------------------------*\
+		All helpers
+		|– helpers/ 
+		|   |– _variables.scss   # Sass Variables 
+		|   |– _functions.scss   # Sass Functions 
+		|   |– _mixins.scss      # Sass Mixins 
+		|   |– _helpers.scss     # Class & placeholders helpers 
+		|   ...                  # Etc… 
+		Helpers
+		
+		The helpers/ folder (sometimes called utils/) gathers all Sass tools and helpers we’ll use across the project. Got a function? A mixin? Put it in there. This folder also contains a _variables.scss file (sometimes _config.scss) which holds all global variables for the project (for typography, color schemes, and so on).
+
+\*------------------------------------*/
+/*------------------------------------*\
+		# Scss Mixins
+\*------------------------------------*/
+
+
+
+/* fadeInUp */
+@keyframes fadeInUp {
+  from {
+    -webkit-transform: translate3d(0, 40px, 0);
+    transform: translate3d(0, 40px, 0); }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 1; } }
+
+
+/* --------------------------------------------------------------------------------------------------------------------------------------------------- */
+#dock-container {
+  position: fixed;
+  bottom: 40px;
+  text-align: center;
+  right: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  padding: 15px 0; }
+  @media only screen and (max-width: 767px) {
+    #dock-container {
+      overflow-x: scroll;
+      white-space: nowrap;
+      bottom: 0;
+      padding: 10px 0 20px;
+      background: rgba(255, 255, 255, 0.53);
+      -webkit-box-shadow: 0px -3px 4px rgba(187, 187, 187, 0.2);
+      box-shadow: 0px -3px 4px rgba(187, 187, 187, 0.2);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px); } }
+
+@media only screen and (min-width: 992px) {
+  #dock-container ul {
+    opacity: 0;
+    animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;
+    animation-duration: 0.2s;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 0.2s;
+    -webkit-animation-fill-mode: both;
+    -webkit-animation: fadeInUp ease-in 1;
+    -moz-animation: fadeInUp ease-in 1;
+    animation: fadeInUp ease-in 1;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-duration: 0.5s;
+    -moz-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-delay: 2s;
+    -moz-animation-delay: 2s;
+    animation-delay: 2s; } }
+
+#dock-container li {
+  list-style-type: none;
+  display: inline-block;
+  vertical-align: top;
+  position: relative; }
+  @media only screen and (max-width: 767px) {
+    #dock-container li {
+      margin: 0 1.5rem; } }
+  #dock-container li.active:after {
+    display: block;
+    content: "";
+    background: #8B661A;
+    width: 55px;
+    height: 5px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%); }
+    @media only screen and (max-width: 767px) {
+      #dock-container li.active:after {
+        height: 2px;
+        bottom: -10px; } }
+
+#dock-container li img {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  -webkit-transition: all 0.3s;
+  -webkit-box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.25);
+  margin-bottom: 1.5rem; }
+  @media only screen and (min-width: 768px) {
+    #dock-container li img {
+      -webkit-transform-origin: 50% 100%; } }
+  @media only screen and (max-width: 991px) {
+    #dock-container li img {
+      width: 45px;
+      height: 45px;
+      margin-bottom: 1rem; } }
+
+@media only screen and (min-width: 768px) {
+  #dock-container li:hover img {
+    -webkit-transform: scale(2);
+    margin: 0 2em; } }
+
+@media only screen and (min-width: 768px) {
+  #dock-container li:hover + li img,
+  #dock-container li.prev img {
+    -webkit-transform: scale(1.5);
+    margin: 0 1.5em; } }
+
+#dock-container li span {
+  display: none; }
+  @media only screen and (min-width: 768px) {
+    #dock-container li span {
+      display: none;
+      position: absolute;
+      bottom: 120px;
+      left: 0;
+      right: 0;
+      width: -webkit-max-content;
+      width: -moz-max-content;
+      width: max-content;
+      background-color: #E4E4E4;
+      border: 1px solid #DCDCDC;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-family: "sukhumvitset";
+      font-size: 14px;
+      font-size: 1.4rem;
+      line-height: 1.5;
+      opacity: 0; } }
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
+    #dock-container li span {
+      bottom: 100px; } }
+  @media only screen and (min-width: 768px) {
+      #dock-container li span:before {
+        content: "";
+        width: 12px;
+        height: 8px;
+        background-image: url(../images/triangle@2x.png);
+        background-size: 12px 8px;
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%); } }
+  @media only screen and (max-width: 767px) {
+    #dock-container li span {
+      display: block;
+      font-family: "sukhumvitset";
+      font-size: 14px;
+      font-size: 1.4rem; } }
+
+@media only screen and (min-width: 768px) {
+  #dock-container li:hover span {
+    display: block;
+    color: #000000;
+    opacity: 1;
+    width: 135px;
+    text-align: center; } }
+
+
+/*# sourceMappingURL=main.css.map */
