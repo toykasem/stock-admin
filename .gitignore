@@ -1,1 +1,3 @@
-/upload/files
+/upload/*.sql
+/DB/*.sql
+/config/*
